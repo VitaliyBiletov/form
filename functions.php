@@ -5,13 +5,20 @@
     }
 
     function load($data){
-
-        if (empty($_POST)){
-            return $data;
+        foreach ($_POST as $k => $v){
+            if(array_key_exists($k, $data)){
+                $data[$k]['value'] = trim($v);
+            }
         }
+        return $data;
+    }
 
-        foreach ($_POST as $k => $v) {
-            echo "{$k} => {$v}";
+    function validate($data){
+        $errors = '';
+        foreach ($data as $k => $v){
+            if ($data[$k]['required'] && empty($data[$k]['value'])){
+                $errors .= "<li>Вы не заполнили поле {$data[$k]['fieldName']}</li>";
+            }
         }
-
+        return $errors;
     }

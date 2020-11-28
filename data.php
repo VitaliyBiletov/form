@@ -1,29 +1,42 @@
 <?php
-    $fields = [
+    $fieldsForStudents = [
 
        "lastName" => [
            "fieldName" => "Фамилия",
-           "require" => 1,
+           "required" => 1,
        ],
 
         "firstName" => [
             "fieldName" => "Имя",
-            "require" => 1,
+            "required" => 1,
         ],
 
         "dateOfBirth" => [
             "fieldName" => "Дата рождения",
-            "require" => 1,
-        ],
-
-        "address" => [
-            "fieldName" => "Домашний адрес",
-            "require" => 1,
+            "required" => 1,
         ],
 
         "addInfo" => [
             "fieldName" => "Дополнительная информация",
-            "require" => 0,
+            "required" => 0,
+        ],
+    ];
+
+    $fieldsForTeachers = [
+
+        "lastName" => [
+            "fieldName" => "Фамилия",
+            "required" => 1,
+        ],
+
+        "firstName" => [
+            "fieldName" => "Имя",
+            "required" => 1,
+        ],
+
+        "addInfo" => [
+            "fieldName" => "Дополнительная информация",
+            "required" => 0,
         ],
 
     ];
