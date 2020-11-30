@@ -3,7 +3,7 @@
 session_start();
 require_once __DIR__ . "/data.php";
 require_once __DIR__ . "/functions.php";
-//require __DIR__ . "/../db.php";
+require __DIR__ . "/db.php";
 
 if (!empty($_POST)) {
 
@@ -18,12 +18,17 @@ if (!empty($_POST)) {
             break;
     }
 
+    $conn = connect();
+    insert($conn, $formName, $fields);
+
+
     if ($errors = validate($fields)){
         $res = ['answer' => 'error', 'errors' => $errors];
     } else {
         $res = ['answer' => 'ok'];
     }
     exit(json_encode($res));
+    connectionClose($conn);
 }
 
 ?>
