@@ -1,11 +1,11 @@
 <?php
 
-    function insert(){
+    function connect(){
+
         $host = 'localhost';
         $database = 'test';
         $user = 'root';
-        $pswd= '';
-        $notification = '';
+        $pswd = 'root';
 
         $conn = mysqli_connect($host, $user, $pswd, $database);
 
@@ -13,20 +13,35 @@
             die("Connection failed: " . mysqli_connect_error());
         }
 
-        $sql = "INSERT INTO teachers (last_name, first_name, add_info) VALUES ('Test', 'Testing', 'Testing@tesing.com')";
+        return $conn;
+    }
 
-        if (mysqli_query($conn, $sql)) { ?>
-            <div class="alert alert-success col-md-6 offset-md-3" role="alert">
-                <?= $notification = 'Новая запись успешно создана!'?>
-            </div>
-            <script>
-                setTimeout(() => $(".alert").fadeOut('middle', function(){ this.remove() } ), 1500)
-            </script>
+    function connectionClose($conn){
+        mysqli_close($conn);
+    }
 
-        <?php } else {
-            $notification = "Error: " . $sql . "<br>" . mysqli_error($conn);
+    function insert($conn, $formName, $fields){
+
+        $notification = "";
+        $arrReq = [];
+
+        foreach ($fields as $k => $v){
+            array_push($arrReq, "'".$v['value']."'");
         }
 
-        mysqli_close($conn);
+        $req = join(', ', $arrReq);
+        //echo $formName;
+
+        switch($formName){
+            case 'formStudents':
+                $sql = "INSERT INTO students (last_name, first_name, date_of_birth, add_info) VALUES ($req)";
+                break;
+            case 'formTeachers':
+                $sql = "INSERT INTO teachers (last_name, first_name, add_info) VALUES ($req)";
+                break;
+        }
+
+        mysqli_query($conn, $sql);
+
     }
 ?>
