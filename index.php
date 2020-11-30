@@ -20,14 +20,6 @@ if (!empty($_POST)) {
 
     $conn = connect();
     insert($conn, $formName, $fields);
-
-
-    if ($errors = validate($fields)){
-        $res = ['answer' => 'error', 'errors' => $errors];
-    } else {
-        $res = ['answer' => 'ok'];
-    }
-    exit(json_encode($res));
     connectionClose($conn);
 }
 

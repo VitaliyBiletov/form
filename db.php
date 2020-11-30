@@ -41,7 +41,18 @@
                 break;
         }
 
-        mysqli_query($conn, $sql);
+        if ($errors = validate($fields)){
+            $res = ['answer' => 'error', 'errors' => $errors];
+        } else {
+            if (mysqli_query($conn, $sql)){
+                $res = ['answer' => 'ok'];
+            } else {
+                $res = mysqli_error($conn);
+            }
+
+        }
+        exit(json_encode($res));
+
 
     }
 ?>
