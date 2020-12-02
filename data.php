@@ -34,6 +34,11 @@
             "required" => 1,
         ],
 
+        "middleName" => [
+            "fieldName" => "Отчество",
+            "required" => 1,
+        ],
+
         "addInfo" => [
             "fieldName" => "Дополнительная информация",
             "required" => 0,

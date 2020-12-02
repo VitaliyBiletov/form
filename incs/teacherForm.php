@@ -23,6 +23,13 @@
                                     Пожалуйста заполните имя
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label for="middleName">Отчество:</label>
+                                <input name="middleName" type="text" class="form-control" id="middleName" required>
+                                <div class="invalid-feedback">
+                                    Пожалуйста заполните отчество
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group col-md-6">
                             <div class="text-center">
