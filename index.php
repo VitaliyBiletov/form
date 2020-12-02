@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+
 require_once __DIR__ . "/data.php";
 require_once __DIR__ . "/functions.php";
 require __DIR__ . "/db.php";
@@ -23,6 +23,7 @@ if (!empty($_POST)) {
     connectionClose($conn);
 }
 
+
 ?>
 
 <!doctype html>
@@ -40,12 +41,14 @@ if (!empty($_POST)) {
 <div class="container">
     <?php include __DIR__ . '/incs/mainMenu.php' ?>
     <div class="tab-content">
-        <div class="tab-pane fade show active" id="studentForm">
-            <?php include __DIR__ . '/incs/studentForm.php'  ?>
-
+        <div class="tab-pane fade" id="studentForm">
+            <?php include __DIR__ . "/incs/studentForm.php" ?>
         </div>
         <div class="tab-pane fade" id="teacherForm">
-            <?php include __DIR__ . '/incs/teacherForm.php'  ?>
+            <?php include __DIR__ . "/incs/teacherForm.php"  ?>
+        </div>
+        <div class="tab-pane fade" id="studentsTable">
+            <?php include __DIR__ . "/incs/studentsTable.php" ?>
         </div>
         <div id="answer" class="col-md-6 offset-md-3 mt-3"></div>
     </div>

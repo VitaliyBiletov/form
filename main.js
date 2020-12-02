@@ -5,12 +5,12 @@
         // Fetch all the forms we want to apply custom Bootstrap validation styles to
         var forms = document.getElementsByClassName('needs-validation');
          // Loop over them and prevent submission
-        console.log(forms)
+        //console.log(forms)
         var validation = Array.prototype.filter.call(forms, function(form) {
 
             form.addEventListener('submit', function(event) {
                 if (form.checkValidity() === false) {
-                    console.log(event.target.id)
+                    //console.log(event.target.id)
                     event.preventDefault();
                     event.stopPropagation();
                 } else {

@@ -1,3 +1,6 @@
+<?php
+//    $_SESSION['current_tab'] = "teacherForm";
+?>
 <div class="container">
     <div class="row">
         <div class="col-md-6 offset-md-3">
