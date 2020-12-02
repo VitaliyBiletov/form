@@ -22,7 +22,6 @@
 
     function insert($conn, $formName, $fields){
 
-        $notification = "";
         $arrReq = [];
 
         foreach ($fields as $k => $v){
