@@ -20,6 +20,18 @@
         mysqli_close($conn);
     }
 
+    function select($conn){
+        $result = [];
+        if ($res = $conn->query("SELECT * FROM students")){
+            $rows = mysqli_num_rows($res); //количество полученных строк
+            for ($i = 0 ; $i < $rows ; ++$i){
+                array_push($result,mysqli_fetch_row($res));
+            }
+        };
+
+        exit(json_encode($result));
+    }
+
     function insert($conn, $formName, $fields){
 
         $arrReq = [];

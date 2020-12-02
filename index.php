@@ -3,7 +3,7 @@
 
 require_once __DIR__ . "/data.php";
 require_once __DIR__ . "/functions.php";
-require __DIR__ . "/db.php";
+require_once __DIR__ . "/db.php";
 
 if (!empty($_POST)) {
 

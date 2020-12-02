@@ -22,8 +22,6 @@
                             $(`.${event.target.id}Loader`).fadeIn();
                         },
                         success: function(response){
-                            //console.log(form.checkValidity())
-                            //console.log(`.${event.target.id}Loader`);
                             $(`.${event.target.id}Loader`).fadeOut("slow", function(){
                                 let res = JSON.parse(response);
                                 //console.log(res);
@@ -59,6 +57,30 @@
             }, false);
         });
     }, false);
+
+    $("#loadButton").click((event)=>{
+        $.ajax({
+            url: '/incs/studentsTable.php',
+            type: 'POST',
+            data: 'select',
+            beforeSend: function(){
+                console.log(`.${event.target.id}Loader`)
+                $(`.${event.target.id}Loader`).fadeIn();
+            },
+            success: function(response){
+                $(`.${event.target.id}Loader`).fadeOut();
+                console.log('success');
+                $("#studentsTable>tbody").empty();
+                let res = JSON.parse(response);
+                res.forEach((record) => {
+                    $("#studentsTable>tbody").append('<tr></tr>');
+                    record.forEach((field) => {
+                        $('#studentsTable tbody').append(`<td>${field}</td>`)
+                    })
+                })
+            }
+        })
+    })
 })()
 
 
